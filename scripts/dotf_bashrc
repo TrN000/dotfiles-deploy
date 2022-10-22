@@ -1,0 +1,21 @@
+#!/usr/bin/bash
+
+####- xset rate
+xset r rate 275 60
+
+####- prompt with git branch modify PS1
+
+####- bash in vi mode
+set -o vi
+bind -m vi-insert "\C-l":clear-screen
+
+####- optional volume control code
+
+####- aliases
+alias ll='ls -alhF'
+alias la='ls -A'
+alias ll='ls -CF'
+alias sshserv='ssh root@trutmann.xyz'
+alias gs='git status'
+alias glog='git --all --decorate --oneline --graph'
+
