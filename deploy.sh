@@ -11,6 +11,7 @@ cat ${SCRDIR}/dotf_i3wm >> ~/.i3/config
 
 ## setup vimrc
 ln -s ${SCRDIR}/.vimrc ~/.vimrc
+## TODO: install all plugins here
 
 ## install software
 awk '{print $1}' 2b_installed | sudo xargs pacman -Syu --noconfirm
