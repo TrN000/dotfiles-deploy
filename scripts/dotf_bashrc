@@ -1,5 +1,9 @@
 #!/usr/bin/bash
 
+####- git bash-completion
+. /usr/share/git/completion/git-completion.bash
+. /usr/share/bash-completion/bash_completion
+
 ####- xset rate
 xset r rate 275 60
 
