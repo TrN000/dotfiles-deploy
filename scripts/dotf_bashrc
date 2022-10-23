@@ -16,6 +16,7 @@ alias ll='ls -alhF'
 alias la='ls -A'
 alias ll='ls -CF'
 alias sshserv='ssh root@trutmann.xyz'
+alias sshgit="ssh -t git@trutmann.xyz 'cd /srv/git; $SHELL -il'"
 alias gs='git status'
 alias glog='git --all --decorate --oneline --graph'
 
