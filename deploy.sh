@@ -1,5 +1,7 @@
 #### deploy script for dot files
 
+set +x
+
 DOTDIR=$(dirname -- $(realpath -- "$0"))
 SCRDIR="${DOTDIR}/scripts"
 
@@ -8,10 +10,10 @@ echo ". ${SCRDIR}/dotf_bashrc" >> ~/.bashrc
 
 ## setup i3wm
 echo "include ${SCRDIR}/dotf_i3wm" >> ~/.i3/config
+# TODO: make dotf_i3wm
 
 ## setup vimrc
 ln -s ${SCRDIR}/.vimrc ~/.vimrc
-## TODO: install all plugins here -> vundle
 
 ## install software
 awk '{print $1}' 2b_installed | sudo xargs pacman -Syu --noconfirm

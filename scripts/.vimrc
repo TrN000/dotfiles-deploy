@@ -1,5 +1,4 @@
 "basics
-execute pathogen#infect()
 
 syntax on
 filetype plugin indent on
@@ -10,8 +9,6 @@ set number
 let &tabpagemax=50
 set hlsearch incsearch
 set lcs=eol:$,trail:¶,tab:<->,space:·
-
-
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -27,6 +24,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 " tpope plugins
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-commentary'
 " auto-completer
 Plugin 'ycm-core/YouCompleteMe'
 " hex colors
@@ -126,8 +124,13 @@ let g:netrw_altv=1
 nnoremap <leader>nt :NERDTreeFocus<CR>
 " Start NERDTree and put the cursor back in the other window.
 " autocmd VimEnter * NERDTree | wincmd p
+
 " Exit Vim if NERDTree is the only window remaining in the only tab.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+" autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+" Close the tab if NERDTree is the only window remaining in it.
+autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
 " Open the existing NERDTree on each new tab.
 autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 
@@ -152,18 +155,15 @@ let g:colorizer_auto_filetype='css,html'
 "some fun
 autocmd VimEnter * echo '(>^w^<) Gutta cavat lapidem'
 
-"Termlink keybinds
-nnoremap <leader>s :call Termlink_start()<cr>
-nnoremap ł :<C-U>call Termlink_send()<cr>j
-vnoremap ł :<C-U>call Termlink_send(Get_visual_selection())<cr>gv
-nnoremap <leader>l :<C-U>call Termlink_send("\<c-l>", "")<cr>
-nnoremap <leader>q :<C-U>call Termlink_send("\<c-d>", "")<cr>
+" Termlink keybinds
+" nnoremap <leader>s :call Termlink_start()<cr>
+" nnoremap ł :<C-U>call Termlink_send()<cr>j
+" vnoremap ł :<C-U>call Termlink_send(Get_visual_selection())<cr>gv
+" nnoremap <leader>l :<C-U>call Termlink_send("\<c-l>", "")<cr>
+" nnoremap <leader>q :<C-U>call Termlink_send("\<c-d>", "")<cr>
 
 " textwidth for markdown files
 autocmd FileType markdown setlocal textwidth=90
-
-"find and replace
-nnoremap S :%s//g<Left><Left>
 
 "vim-template stuff
 let g:email="nicolas.trutmann@gmx.ch"
