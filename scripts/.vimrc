@@ -25,6 +25,7 @@ Plugin 'VundleVim/Vundle.vim'
 " tpope plugins
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-surround'
 " auto-completer
 Plugin 'ycm-core/YouCompleteMe'
 " hex colors
