@@ -1,0 +1,3 @@
+
+bindsym $mod+c workspace next
+bindsym $mod+x workspace prev

@@ -23,5 +23,5 @@ alias sshserv='ssh root@trutmann.xyz'
 alias sshgit="ssh -t git@trutmann.xyz 'cd /srv/git; $SHELL -il'"
 alias lsrepos="ssh -t git@trutmann.xyz 'ls /srv/git'"
 alias gs='git status'
-alias glog='git --all --decorate --oneline --graph'
+alias glog='git log --all --decorate --oneline --graph'
 
