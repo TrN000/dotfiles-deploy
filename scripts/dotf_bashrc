@@ -5,6 +5,8 @@
 . /usr/share/bash-completion/bash_completion
 . ~/.scripts/lib_ethsync.sh
 
+export PATH=${PATH}:~/.scripts/
+
 ####- xset rate
 xset r rate 230 60
 
@@ -28,7 +30,7 @@ alias lsrepos="ssh -t git@trutmann.xyz 'ls /srv/git'"
 alias gs='git status'
 alias glog='git log --all --decorate --oneline --graph'
 alias py='python3.10'
-alias bashrc='vim ~/work/dotf-deploy/scripts/dotf_bashrc'
+alias bashrc='vim ~/work/dotfiles-deploy/scripts/dotf_bashrc'
 alias todo='vim ~/todo.md'
 alias eth='cd ~/ethz/mse-00 && vim -p *.md'
 

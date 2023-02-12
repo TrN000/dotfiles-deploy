@@ -28,7 +28,7 @@
 ## i3 config
 
 - .scripts/toggleEscCaps.sh
-- volume bindings 
+- volume bindings
 - workspace switching
 - start browser
 - xautolock comment out

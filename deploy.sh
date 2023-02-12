@@ -14,12 +14,16 @@ echo "include ${SCRDIR}/dotf_i3wm" >> ~/.i3/config
 
 ## setup vimrc
 ln -s ${SCRDIR}/.vimrc ~/.vimrc
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+## link toggleEscCaps
+ln -s ${SRCDIR}/toggleEscCaps.sh ~/.scripts/toggleEscCaps
 
 ## install software
-awk '{print $1}' 2b_installed | sudo xargs pacman -Syu --noconfirm
+## awk '{print $1}' 2b_installed | sudo xargs pacman -Syu --noconfirm
 
 ## install from AUR
-awk '{print $1}' 2b_installed_AUR | sudo xargs yay -Syu --noconfirm
+## awk '{print $1}' 2b_installed_AUR | sudo xargs yay -Syu --noconfirm
 
 ## tmux.conf deploy
 mkdir -p ~/.config/tmux/tmux.conf
