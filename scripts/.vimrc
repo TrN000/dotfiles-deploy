@@ -27,7 +27,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
 " auto-completer
-Plugin 'ycm-core/YouCompleteMe'
+" Plugin 'ycm-core/YouCompleteMe'
 " hex colors
 Plugin 'chrisbra/Colorizer'
 " nerdtree
@@ -72,6 +72,8 @@ vnoremap <C-c> "+y
 "move through tabs
 nnoremap ä gt
 nnoremap ö gT
+nnoremap <silent> é :silent! tabmove -<CR>
+nnoremap <silent> à :silent! tabmove +<CR>
 
 "set leader (shadows a search function)
 let mapleader=","
@@ -83,8 +85,9 @@ nnoremap <leader>vr :source $MYVIMRC<cr>
 nnoremap <leader>vt :source %:p<cr>
 
 " misc
-nnoremap <leader>ks mw:%s/ \{1,\}$//<CR>`w
+nnoremap <leader>ks mw:%s/ \{1,\}$//e<CR>`w:noh<CR>
 nnoremap <leader>? o<ESC>080i=<ESC>o<ESC>:r! date<CR>o<CR><ESC>k
+nnoremap <leader>! yipGo<CR><ESC>080i=<ESC>o<ESC>:r! date<CR>o<CR><ESC>kp
 nnoremap <C-p>     gqip
 nnoremap <leader>d mwIDONE: <ESC>`w
 nnoremap <leader>w mwIWIP: <ESC>`w
@@ -113,6 +116,26 @@ set completeopt-=preview
 let g:ycm_add_preview_to_completeopt=0
 nmap <leader>k <plug>(YCMHover)
 nnoremap <leader>K :YcmCompleter GetDoc<CR>
+
+" coc settings
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
 
 "netrw
 let g:netrw_banner=0

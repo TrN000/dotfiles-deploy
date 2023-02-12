@@ -3,11 +3,14 @@
 ####- git bash-completion
 . /usr/share/git/completion/git-completion.bash
 . /usr/share/bash-completion/bash_completion
+. ~/.scripts/lib_ethsync.sh
 
 ####- xset rate
-xset r rate 255 60
+xset r rate 230 60
 
 ####- prompt with git branch modify PS1
+# from here https://bashrcgenerator.com/
+export PS1="\[\033[38;5;6m\]\u\[$(tput sgr0)\]: \[$(tput sgr0)\]\[\033[38;5;14m\]\W\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;7m\]\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')\[$(tput sgr0)\]\\$ \[$(tput sgr0)\]"
 
 ####- bash in vi mode
 set -o vi
@@ -24,4 +27,9 @@ alias sshgit="ssh -t git@trutmann.xyz 'cd /srv/git; $SHELL -il'"
 alias lsrepos="ssh -t git@trutmann.xyz 'ls /srv/git'"
 alias gs='git status'
 alias glog='git log --all --decorate --oneline --graph'
+alias py='python3.10'
+alias bashrc='vim ~/work/dotf-deploy/scripts/dotf_bashrc'
+alias todo='vim ~/todo.md'
+alias eth='cd ~/ethz/mse-00 && vim -p *.md'
 
+export EDITOR=vim
