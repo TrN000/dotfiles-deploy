@@ -11,3 +11,7 @@ run:
     . deploy.sh
 
 ought to work, maybe, lol.
+
+# TODO
+
+- [ ] add toggleEscCaps for fedora using xkb configuration file
