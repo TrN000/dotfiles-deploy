@@ -17,7 +17,7 @@ ln -s ${SCRDIR}/.vimrc ~/.vimrc
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 ## link toggleEscCaps
-ln -s ${SRCDIR}/toggleEscCaps.sh ~/.scripts/toggleEscCaps
+ln -s ${SRCDIR}/toggleEscCaps.sh ${HOME}/.scripts/toggleEscCaps
 
 ## install software
 ## awk '{print $1}' 2b_installed | sudo xargs pacman -Syu --noconfirm
@@ -26,6 +26,6 @@ ln -s ${SRCDIR}/toggleEscCaps.sh ~/.scripts/toggleEscCaps
 ## awk '{print $1}' 2b_installed_AUR | sudo xargs yay -Syu --noconfirm
 
 ## tmux.conf deploy
-mkdir -p ~/.config/tmux/tmux.conf
-ln -s ${SCRDIR}/tmux.conf ~/.config/tmux/tmux.conf
+mkdir -p ~/.config/tmux
+ln -s ${SCRDIR}/tmux.conf ${HOME}/.config/tmux/tmux.conf
 

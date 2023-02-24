@@ -95,7 +95,7 @@ nnoremap <leader>D mw^^dW`w
 nnoremap <C-¨> <C-]>
 
 " misc function key maps
-nnoremap <F2>  :<C-U>execute "! " . getline('.')<CR>
+" nnoremap <F2>  :<C-U>execute "! " . getline('.')<CR>
 nnoremap <F3>  :<C-U>set nu!<CR>
 nnoremap <F4>  :<C-U>set rnu!<CR>
 
@@ -118,6 +118,12 @@ nmap <leader>k <plug>(YCMHover)
 nnoremap <leader>K :YcmCompleter GetDoc<CR>
 
 " coc settings
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
+nmap <silent> <leader>p <Plug>(coc-diagnostic-prev)
+nmap <silent> <leader>n <Plug>(coc-diagnostic-next)
+
+" show docs
 nnoremap <silent> K :call ShowDocumentation()<CR>
 
 function! ShowDocumentation()
