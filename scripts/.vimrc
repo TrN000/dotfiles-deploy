@@ -69,6 +69,7 @@ set termguicolors
 " copy and paste with clipboard
 vnoremap <C-c> "+y
 
+
 "move through tabs
 nnoremap ä gt
 nnoremap ö gT
@@ -117,11 +118,40 @@ let g:ycm_add_preview_to_completeopt=0
 nmap <leader>k <plug>(YCMHover)
 nnoremap <leader>K :YcmCompleter GetDoc<CR>
 
+"
+"
 " coc settings
+"
+"
+"
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved
+set signcolumn=yes
+
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
 nmap <silent> <leader>p <Plug>(coc-diagnostic-prev)
 nmap <silent> <leader>n <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Formatting selected code
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s)
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+
 
 " show docs
 nnoremap <silent> K :call ShowDocumentation()<CR>
@@ -164,10 +194,16 @@ autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTa
 " Open the existing NERDTree on each new tab.
 autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 
+augroup latexhelper
+  autocmd!
+  autocmd FileType plaintex iabbrev \begin \begin{}<CR>\end{}<Up>
+augroup end
+
 "tabs vs spaces situation
 set tabstop=4 shiftwidth=4 expandtab
-set foldmethod=indent
-autocmd BufRead * normal! zR
+" set foldmethod=indent
+" autocmd BufRead * normal! zR
+autocmd FileType haskell setlocal tabstop=2 shiftwidth=2 expandtab
 
 "for R plugin
 let R_args = ['--vanilla']

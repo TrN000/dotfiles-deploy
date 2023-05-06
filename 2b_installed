@@ -4,7 +4,7 @@ steam
 ranger
 feh
 firefox
-bluez 
+bluez
 bluez-utils
 blueman
 pulseaudio-bluetooth
@@ -19,3 +19,6 @@ calcurse
 newsboat
 bash-completion
 transmission-gtk
+tcc
+gdb
+valgrind
